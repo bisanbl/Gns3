@@ -34,12 +34,12 @@ if [ "$EUID" -eq 0 ]; then
   chekinstall
   if [ $? = "1" ]; then
     echo "Paso 5/6 : Configurando."
-    #sudo groupadd docker #>> /var/log/gns3installlog
+    sudo groupadd docker #>> /var/log/gns3installlog
 
     user=$(w|awk 'NR>2 {print $1}')
 
     sudo usermod -aG docker $user #>> /var/log/gns3installlog
-    #sudo usermod -aG bridge $user #>> /var/log/gns3installlog
+    sudo usermod -aG bridge $user #>> /var/log/gns3installlog
     sudo usermod -aG libvirt $user #>> /var/log/gns3installlog
     sudo usermod -aG kvm $user #>> /var/log/gns3installlog
     sudo usermod -aG wireshark $user #>> /var/log/gns3installlog
